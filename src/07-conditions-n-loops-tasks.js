@@ -132,6 +132,7 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
   // const y4 = rect2.top;
   // const y3 = y4 + rect2.height;
   // return !(x3 > x2 || y3 > y2 || x1 > x4 || y1 > y4);
+  throw new Error('Not implemented');
 }
 
 
