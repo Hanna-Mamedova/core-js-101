@@ -18,7 +18,7 @@
  *
  * @example
  *    const p1 = willYouMarryMe(true);
- *    p1.then(answer => console.log(answer)) // 'Hooray!!! She said "Yes"!'
+ *    p1.then(answer => console.log(answer)) //
  *
  *    const p2 = willYouMarryMe(false);
  *    p2.then(answer => console.log(answer)) // 'Oh no, she said "No".';
@@ -28,8 +28,16 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  const yes = 'Hooray!!! She said "Yes"!';
+  const no = 'Oh no, she said "No".';
+  const nothing = 'Wrong parameter is passed! Ask her again.';
+
+  return new Promise((resolved, rejected) => {
+    if (isPositiveAnswer) resolved(yes);
+    else if (isPositiveAnswer === false) resolved(no);
+    else if (!isPositiveAnswer) rejected(new Error(nothing));
+  });
 }
 
 
@@ -48,8 +56,10 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  return new Promise((resolve) => {
+    resolve(Promise.all(array));
+  });
 }
 
 /**
@@ -71,8 +81,10 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+function getFastestPromise(array) {
+  return new Promise((resolve) => {
+    resolve(Promise.race(array));
+  });
 }
 
 /**
@@ -93,6 +105,9 @@ function getFastestPromise(/* array */) {
  *
  */
 function chainPromises(/* array, action */) {
+  // return new Promise((resolve) => {
+  //   resolve(Promise.all(array));
+  // });
   throw new Error('Not implemented');
 }
 
